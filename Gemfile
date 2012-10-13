@@ -14,7 +14,7 @@ group :development, :test do
     gem 'capybara'
     gem 'launchy'
     gem 'rspec-rails'
-    gem 'simplecov'
+#    gem 'simplecov'
     gem 'factory_girl_rails'
     gem 'ZenTest'
 end
@@ -37,6 +37,7 @@ end
 
 gem 'jquery-rails'
 gem 'haml'
+gem 'haml-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

@@ -1,4 +1,6 @@
 TaskManager::Application.routes.draw do
+  resources :tasks
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -13,6 +15,7 @@ TaskManager::Application.routes.draw do
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
 
+    resources :tasks
   # Sample resource route with options:
   #   resources :products do
   #     member do
