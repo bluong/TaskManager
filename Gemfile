@@ -39,7 +39,7 @@ gem 'jquery-rails'
 gem 'haml'
 gem 'haml-rails'
 gem 'heroku'
-
+gem 'omniauth-facebook', '1.4.1'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

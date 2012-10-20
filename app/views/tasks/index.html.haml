@@ -1,3 +1,9 @@
+#login
+  - if @current_user
+    %p.welcome  Welcome, #{@current_user.name}!
+    = link_to 'Log Out', logout_path
+  - else
+    %p.login= link_to 'Log in with your Facebook account', login_path("facebook")
 %h2 To Do List
 = link_to 'Create New Task', new_task_path
 %table#tasks.table.table-striped.table-bordered
