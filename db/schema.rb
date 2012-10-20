@@ -11,15 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121013065038) do
+ActiveRecord::Schema.define(:version => 20121019225224) do
 
   create_table "tasks", :force => true do |t|
     t.string   "name"
     t.string   "course"
-    t.datetime "due_date"
     t.text     "info"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.time     "due_date"
   end
 
 end
