@@ -19,7 +19,7 @@
       %tr
         %td= link_to task.name, edit_task_path(task)
         %td= task.course
-        %td= task.due_date.to_formatted_s(:long)
+        %td= task.due_date
         %td= task.info
         %td= button_to 'Complete', task, :confirm => 'Are you sure?', :method => :delete
 
