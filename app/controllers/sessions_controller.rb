@@ -3,7 +3,9 @@ class SessionsController < ApplicationController
   skip_before_filter :set_current_user
   
   def index
-
+    if session[:user_id]
+      redirect_to tasks_path and return
+    end
   end
 
   def create
