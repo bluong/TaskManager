@@ -1,9 +1,11 @@
 class TasksController < ApplicationController
+  
+
+
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
-
+    @tasks = @current_user.tasks
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @tasks }

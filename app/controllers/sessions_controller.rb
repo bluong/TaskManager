@@ -1,14 +1,24 @@
 class SessionsController < ApplicationController
+  
   skip_before_filter :set_current_user
+  
+  def index
+
+  end
+
   def create
-    auth = request.env["omniauth.auth"]
-    user = User.find_by_uid(auth["provider"], auth["uid"]) || User.create_with_omniauth(auth)
-    session[:user_id] = user.id
+    @current_user = User.find_by_login_and_password params[:user][:login], params[:user][:password]
+    if @current_user == nil
+      flash[:notice] = "Login/Password not found."
+      redirect_to index_path and return
+    end
+    session[:user_id] = @current_user.id
     redirect_to tasks_path
   end
+
   def destroy
     session.delete(:user_id)
     flash[:notice] = 'Logged out successfully.'
-    redirect_to tasks_path
+    redirect_to index_path
   end
 end

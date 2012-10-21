@@ -1,0 +1,18 @@
+%h2 Please sign up!
+
+-if @user.errors.any?
+  #error_explanation
+    %h2= "#{pluralize(@task.errors.count, "error")} prohibited this task from being saved:"
+    %ul
+      - @user.errors.full_messages.each do |msg|
+        %li= msg
+
+= form_for @user do |f|
+  %p
+    = f.label :login
+    = f.text_field :login
+  %p
+    = f.label :password
+    = f.password_field :password
+  %p.button
+    = f.submit 'Creation!'

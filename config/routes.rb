@@ -16,9 +16,11 @@ TaskManager::Application.routes.draw do
   #   resources :products
 
     resources :tasks
-    root :to => 'tasks#index'
-    match 'auth/:provider/callback' => 'sessions#create', :as => 'login'
-    match 'logout' => 'sessions#destroy'
+    root :to => 'sessions#index'
+    resources :users
+    match '/login' => 'sessions#create', :as => 'login'
+    match '/' => 'sessions#index', :as => 'index'
+    match '/logout' => 'sessions#destroy', :as => 'logout'
   # Sample resource route with options:
   #   resources :products do
   #     member do

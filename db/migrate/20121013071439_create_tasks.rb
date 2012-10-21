@@ -5,7 +5,7 @@ class CreateTasks < ActiveRecord::Migration
       t.string :course
       t.datetime :due_date
       t.text :info
-
+      t.references :user
       t.timestamps
     end
   end
