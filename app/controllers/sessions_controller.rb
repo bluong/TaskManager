@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   
-  skip_before_filter :set_current_user
+  skip_before_filter :set_current_user, :set_time_zone
   
   def index
     if session[:user_id]

@@ -14,7 +14,7 @@
     = f.text_field :course
   .field
     = f.label :due_date
-    = f.datetime_select :due_date, options = {:default => Time.now.localtime, :order => [:month, :day, :year], :ampm => true}, html_options = {:style=>'width: auto'}
+    = f.datetime_select :due_date, options = {:default => Time.zone.now, :order => [:month, :day, :year], :ampm => true}, html_options = {:style=>'width: auto'}
   .field
     = f.label :info
     = f.text_area :info, html_options = {:style=>'width: 500px; height: 125px'}

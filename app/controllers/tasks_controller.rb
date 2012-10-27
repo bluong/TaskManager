@@ -1,37 +1,20 @@
 class TasksController < ApplicationController
-  
-
-
   # GET /tasks
   # GET /tasks.json
   def index
     @tasks = @current_user.tasks
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @tasks }
-    end
   end
 
   # GET /tasks/1
   # GET /tasks/1.json
   def show
     @task = Task.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @task }
-    end
   end
 
   # GET /tasks/new
   # GET /tasks/new.json
   def new
     @task = Task.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @task }
-    end
   end
 
   # GET /tasks/1/edit
@@ -43,16 +26,13 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     @task = Task.new(params[:task])
+    @current_user.tasks << @task
 
-    respond_to do |format|
-      if @task.save
-        @tasks = Task.all
-        format.html { render action: "index", notice: 'Task was successfully created.' }
-        format.json { render json: @task, status: :created, location: @task }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
-      end
+    if @current_user.save
+      @tasks = @current_user.tasks
+      redirect_to tasks_path
+    else
+      redirect_to new_task_path
     end
   end
 
@@ -63,11 +43,9 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.update_attributes(params[:task])
-        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
-        format.json { head :no_content }
+        redirect_to task_path(params[:id])
       else
-        format.html { render action: "edit" }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
+        redirect_to edit_task_path(params[:id])
       end
     end
   end
@@ -78,9 +56,5 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     @task.destroy
 
-    respond_to do |format|
-      format.html { redirect_to tasks_url }
-      format.json { head :no_content }
-    end
   end
 end

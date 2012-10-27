@@ -15,8 +15,8 @@ class UsersController < ApplicationController
         flash[:notice] = "New user #{@user.login} created."
         redirect_to index_path and return
       else
-        format.html { render action: "new" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        flash[:notice] = "Login/Password Field cannot be blank."
+        redirect_to new_user_path and return
       end
     end
   end

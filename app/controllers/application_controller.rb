@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-  #before_filter :set_time_zone
+  before_filter :set_time_zone
   before_filter :set_current_user
   protected
   def set_time_zone

@@ -16,11 +16,11 @@ ActiveRecord::Schema.define(:version => 20121020204629) do
   create_table "tasks", :force => true do |t|
     t.string   "name"
     t.string   "course"
+    t.datetime "due_date"
     t.text     "info"
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.time     "due_date"
   end
 
   create_table "users", :force => true do |t|
