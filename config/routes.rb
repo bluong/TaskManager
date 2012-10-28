@@ -19,7 +19,6 @@ TaskManager::Application.routes.draw do
     root :to => 'sessions#index'
     resources :users
     match '/login' => 'sessions#create', :as => 'login'
-    match '/' => 'sessions#index', :as => 'index'
     match '/logout' => 'sessions#destroy', :as => 'logout'
   # Sample resource route with options:
   #   resources :products do

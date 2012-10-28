@@ -8,6 +8,6 @@ class ApplicationController < ActionController::Base
   end
   def set_current_user
     @current_user ||= User.find_by_id session[:user_id]
-    redirect_to index_path and return unless @current_user
+    redirect_to root_path and return unless @current_user
   end
 end
