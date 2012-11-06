@@ -43,7 +43,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.update_attributes(params[:task])
-        redirect_to task_path(params[:id])
+        redirect_to tasks_path
       else
         redirect_to edit_task_path(params[:id])
       end
