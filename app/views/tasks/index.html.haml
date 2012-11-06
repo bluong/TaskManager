@@ -9,7 +9,6 @@
       %th Name
       %th Course
       %th Due date
-      %th Info
   %tbody
     - @tasks.each do |task|
       
@@ -17,7 +16,6 @@
         %td= link_to task.name, edit_task_path(task)
         %td= task.course
         %td= task.due_date.to_formatted_s(:long_ordinal)
-        %td= task.info
         %td= button_to 'Complete', task, :confirm => 'Are you sure?', :method => :delete
 
 
