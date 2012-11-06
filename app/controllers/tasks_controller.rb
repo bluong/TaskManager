@@ -41,12 +41,10 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
 
-    respond_to do |format|
-      if @task.update_attributes(params[:task])
-        redirect_to tasks_path
-      else
-        redirect_to edit_task_path(params[:id])
-      end
+    if @task.update_attributes(params[:task])
+      redirect_to tasks_path
+    else
+      redirect_to edit_task_path(params[:id])
     end
   end
 
