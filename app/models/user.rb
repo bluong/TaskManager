@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-  attr_accessible :login, :password
+  attr_accessible :login, :password_digest, :password_confirmation, :password
+  has_secure_password
   validates :login, :presence => {:message => "cannot be blank"}, :uniqueness => {:message => "must be unique."}
-  validates :password, :presence => {:message => "cannot be blank"}
   has_many :tasks
 end

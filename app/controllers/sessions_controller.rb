@@ -9,13 +9,14 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @current_user = User.find_by_login_and_password params[:user][:login], params[:user][:password]
-    if @current_user == nil
-      flash[:notice] = "Login/Password not found."
-      redirect_to root_path and return
+    @current_user = User.find_by_login(params[:user][:login])
+    if @current_user and @current_user.authenticate(params[:user][:password]) 
+      session[:user_id] = @current_user.id
+      redirect_to tasks_path
+    else
+      flash[:notice] = "Login/Password not found."  
+      redirect_to root_path
     end
-    session[:user_id] = @current_user.id
-    redirect_to tasks_path
   end
 
   def destroy
