@@ -2,7 +2,11 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = @current_user.tasks
+    if not params[:sort] and session[:sort]
+      redirect_to tasks_path(:sort => session[:sort])
+    end
+    session[:sort] = params[:sort]
+    @tasks = params[:sort] ? @current_user.tasks.order(params[:sort]) : @current_user.tasks
   end
 
   # GET /tasks/1

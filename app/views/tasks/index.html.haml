@@ -7,8 +7,8 @@
   %thead
     %tr
       %th Name
-      %th Course
-      %th Due date
+      %th= link_to 'Course', tasks_path(:sort => :course)
+      %th= link_to 'Due date', tasks_path(:sort => :due_date)
   %tbody
     - @tasks.each do |task|
       
